@@ -16,17 +16,23 @@ else
     aws iam create-access-key --user-name kops
 fi
 
+
+echo "Create S3 bucket"
+aws s3api create-bucket \
+    --bucket $S3_BUCKET_NAME \
+    --region us-east-1
+
 echo "Create 1 cluster with 1 micro master and 1 micro node"
 kops create cluster \
---name=kubernetes.fullstack.ws \
---state=s3://kops-state-b24b \
---zones=ap-southeast-1a \
+--name=$CLUSTER_NAME \
+--state=$S3_BUCKET_NAME \
+--zones=$AWS_AVAILABE_ZONE_NAME \
 --node-count=1 \
 --node-size=t2.micro \
 --master-size=t2.micro \
---dns-zone=kubernetes.fullstack.ws \
+--dns-zone=$CLUSTER_NAME \
 --ssh-public-key=./aws_rsa.pub
 
-kops update cluster kubernetes.fullstack.ws --yes --state=s3://kops-state-b24b
+kops update cluster $CLUSTER_NAME --yes --state=$S3_BUCKET_NAME
 
 
