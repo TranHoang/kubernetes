@@ -1,11 +1,11 @@
-# Kubernetes Demo
+# Kubernetes / Kops Demo
 
 ## Setup vagrant
 
 1. Pull the source code
 
 ```bash
-git clone https://github.com/TranHoang/kubernetest.git
+git clone https://github.com/TranHoang/kubernetes.git
 vagrant up
 vagrant ssh
 ```
@@ -45,7 +45,12 @@ kubernetes
 
 2. Config AWS Route 53
 
+    Create a public hosted zones in [AWS Route 53](https://console.aws.amazon.com/route53/home?region=us-west-2#)
+
+
 3. Config DNS in the domain panel
+    Added NS Record with host name is the AWS Route 53 values. For example
+    ![DNS](https://raw.githubusercontent.com/TranHoang/kubernetes/master/images/DNS.png)
 
 4. Create 1 micro cluster
 
