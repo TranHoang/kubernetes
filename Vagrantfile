@@ -24,6 +24,7 @@ Vagrant.configure("2") do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
   config.vm.network "forwarded_port", guest: 8001, host: 9999
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
@@ -43,8 +44,10 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "./bin", "/kubernetes/bin"
-  config.vm.synced_folder "./env", "/kubernetes/env"
+  config.vm.synced_folder "./bin", "/k8s/bin"
+  config.vm.synced_folder "./env", "/k8s/env"
+  config.vm.synced_folder "./src", "/k8s/src"
+  config.vm.synced_folder "./devops", "/k8s/devops"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
