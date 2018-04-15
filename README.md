@@ -72,7 +72,7 @@ kubectl expose deployment hello-minikube --type=NodePort
 kubectl get service
 ```
 
-## Deploy helloworld service to minukube on local
+## Create helloworld pod on minukube
 
 1. Start minikube cluster
 
@@ -115,7 +115,7 @@ kubectl expose pod helloworld.example.com --type=NodePort --name helloworld-serv
 minikube service helloworld-service --url
 ```
 
-## Deploy helloworld service to AWS
+## Create helloworld pod on AWS
 
 1. Build the helloworld image
 
@@ -149,6 +149,14 @@ minikube service helloworld-service --url
 
 6. Access the [http://helloworld.kubernetes.fullstack.ws](http://helloworld.kubernetes.fullstack.ws/)
 
+## Deploy helloworld by k8s deployment
+
+```bash
+./bin/deploy.sh
+kubectl expose deployment helloworld-deployment --type=NodePort
+minikube service helloworld-deployment --url
+```
+
 ## Reference Link
 
 * [Kops deploy to AWS](https://github.com/kubernetes/kops/blob/master/docs/aws.md)
@@ -172,6 +180,17 @@ kubectl exec -it {POD_NAME} -c [CONTAINER_NAME] -- /bin/bash
 
 ```bash
 kubectl describe {SERVICE_NAME}
+```
+
+4. Update an image for a specific container in a deployment
+
+```bash
+./bin/deploy-update-image.sh -c [CONTAINER_NAME] -i [Docker hub image uri]
+```
+
+Example
+```
+./bin/deploy-update-image.sh -c k8s-demo -i tranhoang/helloworld:2.0
 ```
 
 ## Tips:
