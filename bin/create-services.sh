@@ -5,4 +5,4 @@ APP_NAME="helloworld"
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 APP_DEVOPS_FOLDER="$(dirname "$SCRIPTPATH")/devops/$APP_NAME"
 
-kubectl create -f $APP_DEVOPS_FOLDER/$APP_NAME"_"service.yml
+kubectl create -f $APP_DEVOPS_FOLDER/service.yml
