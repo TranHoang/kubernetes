@@ -7,3 +7,4 @@ APP_DEVOPS_FOLDER="$(dirname "$SCRIPTPATH")/devops/$APP_NAME"
 
 kubectl create -f $APP_DEVOPS_FOLDER/deployment.yml --record
 kubectl rollout status deployment/$APP_NAME-deployment
+kubectl get deployments

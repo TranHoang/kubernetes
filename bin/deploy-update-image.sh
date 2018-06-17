@@ -9,7 +9,7 @@ Options:
 
 Examples:
     # Use tranhoang/helloworld:2.0 for k8s-demo deployment
-    $(basename "$0") -c k8s-demo -i tranhoang/helloworld:2.0"
+    $(basename "$0") -c k8s-demo -i tranhoangnguyen/helloworld:2.0"
 
 # Read container and image name
 while getopts ":hc:i:" opt; do
