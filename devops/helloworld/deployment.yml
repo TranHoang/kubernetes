@@ -4,6 +4,7 @@ metadata:
   name: helloworld-deployment
 spec:
   replicas: 3
+  revisionHistoryLimit: 100
   template:
     metadata:
       labels:
@@ -16,3 +17,13 @@ spec:
         - name:  nodejs-port
           containerPort:  3000
           protocol: TCP
+        livenessProbe:
+          httpGet:
+              path: /
+              port: nodejs-port
+          initialDelaySeconds: 15
+          timeoutSeconds: 30
+      nodeSelector:
+        hardware: high-spec
+      
+      
